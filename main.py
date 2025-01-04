@@ -26,7 +26,7 @@ class WeatherApp(QWidget):
 
         self.setStyleSheet("""
     QWidget {
-        background-color: white;
+        background-color: #e0fbfc;
         color: black;
         font-size: 16px;
     }
@@ -64,11 +64,12 @@ class WeatherApp(QWidget):
         #weather text box
         weather_box = QWidget()
         weather_box.setStyleSheet("""
-            background-color: #f0f0f0;
+            background-color: #2677ad;
             border: 2px solid #cccccc;
             border-radius: 10px;
             padding: 20px;
-            border-color: black
+            border-color: white;
+            color: white;
         """)
 
         grid = QGridLayout()
@@ -80,7 +81,7 @@ class WeatherApp(QWidget):
 
         weather_box.setLayout(grid)
         vbox.addWidget(weather_box)
-
+        
         self.setLayout(vbox)
 
         self.city_label.setAlignment(Qt.AlignHCenter)
