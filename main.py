@@ -17,8 +17,37 @@ class WeatherApp(QWidget):
 
     def setupUI(self):
         self.setGeometry(700,700,500,500)
-        self.setStyleSheet("background-color: white; text-color: black")
         self.setWindowTitle("Weather App")
+
+        self.setStyleSheet("""
+    QWidget {
+        background-color: white;
+        color: black;
+        font-size: 16px;
+    }
+    QLabel {
+        font-size: 20px;
+        color: #333333;
+    }
+    QLineEdit {
+        border: 2px solid #cccccc;
+        border-radius: 5px;
+        padding: 10px;
+        font-size: 18px;
+    }
+    QPushButton {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 18px;
+        border-radius: 5px;
+    }
+    QPushButton:hover {
+        background-color: #45a049;
+    }
+""")
+        
         vbox = QVBoxLayout()
         vbox.addWidget(self.city_label)
         vbox.addWidget(self.city_input)
@@ -27,10 +56,14 @@ class WeatherApp(QWidget):
         vbox.addWidget(self.emoji_label)
         vbox.addWidget(self.description_label)
 
+        vbox.setSpacing(10)
+        vbox.setContentsMargins(10, 10, 10, 10)
         self.setLayout(vbox)
 
         self.city_label.setAlignment(Qt.AlignCenter)
-        self.city_label.setStyleSheet("color: black; font-size: 20px")
+
+
+        
 
         #self.city_label.setGeometry(300,300,50,100)
 
