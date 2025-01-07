@@ -2,6 +2,10 @@ import sys
 import requests
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QLineEdit, QPushButton, QVBoxLayout, QGridLayout
 from PyQt5.QtCore import Qt
+from dotenv import load_dotenv
+import os
+
+
 
 class WeatherApp(QWidget):
     def __init__(self):
@@ -94,7 +98,13 @@ class WeatherApp(QWidget):
         self.get_weather_button.clicked.connect(self.get_weather)
 
     def get_weather(self):
-            api_key = "cd9d8b95a2879904929d3575f5c4bb41"
+            load_dotenv('/Users/jonahtran/Desktop/Github/Python Project/.env')
+            api_key = os.getenv('MY_API_KEY')
+            print(api_key)
+            if not api_key:
+                 self.display_error("API Key not found")
+                 return
+            
             city = self.city_input.text()
             url = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}"
             response = requests.get(url)
@@ -163,7 +173,10 @@ class WeatherApp(QWidget):
 
 
 if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    weather_app = WeatherApp()
-    weather_app.show()
-    sys.exit(app.exec_())
+    load_dotenv()
+    api_key = os.getenv("MY_API_KEY")
+    print(api_key)
+    #app = QApplication(sys.argv)
+    #eather_app = WeatherApp()
+    #weather_app.show()
+    #sys.exit(app.exec_())
