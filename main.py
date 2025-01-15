@@ -173,10 +173,7 @@ class WeatherApp(QWidget):
 
 
 if __name__ == "__main__":
-    load_dotenv()
-    api_key = os.getenv("MY_API_KEY")
-    print(api_key)
-    #app = QApplication(sys.argv)
-    #eather_app = WeatherApp()
-    #weather_app.show()
-    #sys.exit(app.exec_())
+    app = QApplication(sys.argv)
+    weather_app = WeatherApp()
+    weather_app.show()
+    sys.exit(app.exec_())
